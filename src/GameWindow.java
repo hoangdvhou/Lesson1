@@ -3,6 +3,7 @@ import java.awt.event.*;
 
 public class GameWindow extends JFrame {
     GameCanvas gameCanvas;
+    //InputManager inputManager;
 
 
     public GameWindow() {
@@ -18,12 +19,12 @@ public class GameWindow extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 System.out.println("KeyPressed");
-                gameCanvas.KeyPressed(e);
+                gameCanvas.inputManager.KeyPressed(e);
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                gameCanvas.KeyReleased(e);
+                gameCanvas.inputManager.KeyReleased(e);
             }
         });
         this.setSize(600, 800);
@@ -39,13 +40,15 @@ public class GameWindow extends JFrame {
         this.setVisible(true);
     }
 
-    long lastTimeRender = 0;
+
 
     void mainLoop() {
+        long lastTimeRender = 0;
+        long currentTime;
         while (true) {
-            long currentTime = System.nanoTime();
+            currentTime = System.nanoTime();
             if (currentTime - lastTimeRender >= 17_000_000) {
-                gameCanvas.update();
+                gameCanvas.run();
                 gameCanvas.render();
                 lastTimeRender = currentTime;
             }
