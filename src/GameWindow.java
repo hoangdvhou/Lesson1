@@ -18,7 +18,6 @@ public class GameWindow extends JFrame {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("KeyPressed");
                 gameCanvas.inputManager.KeyPressed(e);
             }
 

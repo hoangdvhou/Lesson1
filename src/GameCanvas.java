@@ -23,6 +23,7 @@ public class GameCanvas extends JPanel {
     BufferedImage backBuffer;//null
     Graphics backBufferGraphics;
     Random random;
+    int count;
 
     public GameCanvas() {
 
@@ -88,6 +89,7 @@ public class GameCanvas extends JPanel {
 
     void run() {
         player.run();
+        player.shoot(bullets);
 
 
         for (PlayerBullet b : bullets) {
