@@ -15,6 +15,7 @@ public class GameCanvas extends JPanel {
     ArrayList<PlayerBullet> bullets;
     ArrayList<Enemy> enemies;
 
+
     InputManager inputManager;
 
 
@@ -27,15 +28,14 @@ public class GameCanvas extends JPanel {
 
     public GameCanvas() {
 
+
+
         inputManager = new InputManager();
 
 
         random = new Random();
         bullets = new ArrayList<>();
 
-        PlayerBullet b1 = new PlayerBullet(300,700);
-
-        PlayerBullet b2 = new PlayerBullet(300,600);
 
         // Enemy
         enemies = new ArrayList<>();
@@ -58,13 +58,12 @@ public class GameCanvas extends JPanel {
 
 
         player = new Player(268,680);
+        player.bullets = this.bullets;
         background = ImageUtil.load("images/background/background.png");
 
 
 
 
-        bullets.add(b1);
-        bullets.add(b2);
         //
         enemies.add(e1);
         enemies.add(e2);
@@ -89,12 +88,12 @@ public class GameCanvas extends JPanel {
 
     void run() {
         player.run();
-        player.shoot(bullets);
-
-
+        player.fire();
         for (PlayerBullet b : bullets) {
             b.run();
         }
+
+
 
 
         enemySpawnCount++;
