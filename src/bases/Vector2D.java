@@ -1,27 +1,29 @@
+package bases;
+
 public class Vector2D {
-    float x,y;
-    Vector2D(float x,float y){
+    public float x,y;
+    public Vector2D(float x,float y){
         this.x = x;
         this.y = y;}
-    Vector2D() {
+    public Vector2D() {
     this(0,0);
     }
 
-    void print() {
+    public void print() {
         System.out.println("x =" + this.x );
         System.out.println("y =" + this.y);
     }
-    void addUp(float x,float y) {
+    public void addUp(float x,float y) {
         this.x += x;
         this.y += y;
     }
-    Vector2D add(float x, float y) {
+    public Vector2D add(float x, float y) {
 
         return new Vector2D(this.x +x,this.y +y);
 
 
     }
-    void  addUp(Vector2D other) {
+    public void  addUp(Vector2D other) {
         this.addUp(other.x,other.y);
     }
 
@@ -73,7 +75,7 @@ public class Vector2D {
         //v1.print();
        // v2.print();
        // v1.ScaleBy(3);
-       // Vector2D v4 = v1.Scale(3);
+       // bases.Vector2D v4 = v1.Scale(3);
         //v4.print();
         //v1.print();
         System.out.println("v1 length : " + v1.length());

@@ -1,9 +1,14 @@
+package game;
+
+import inputs.InputManager;
+//import game.Setting;
+
 import javax.swing.*;
 import java.awt.event.*;
 
 public class GameWindow extends JFrame {
     GameCanvas gameCanvas;
-    //InputManager inputManager;
+    //inputs.InputManager inputManager;
 
 
     public GameWindow() {
@@ -18,30 +23,31 @@ public class GameWindow extends JFrame {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                gameCanvas.inputManager.KeyPressed(e);
+                InputManager.instance.KeyPressed(e);
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                gameCanvas.inputManager.KeyReleased(e);
+                InputManager.instance.KeyReleased(e);
             }
         });
-        this.setSize(600, 800);
-        this.setResizable(false);
-        this.setTitle("Micro-war");
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setSize(600, 800);
 
+        this.setTitle("Micro-war");
         //Setup canvas
         gameCanvas = new GameCanvas();
         this.setContentPane(gameCanvas);
 
-
         this.setVisible(true);
+
+
     }
 
 
 
-    void mainLoop() {
+    public void mainLoop() {
         long lastTimeRender = 0;
         long currentTime;
         while (true) {

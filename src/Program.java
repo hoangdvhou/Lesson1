@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+import bases.Vector2D;
+import game.GameWindow;
+//import game.Setting;
 
 public class Program {
     public static void main(String[] args) {
@@ -11,6 +13,8 @@ public class Program {
 
         Vector2D v3 = vector2D.add(3,4);
         vector2D.print();
+        //Setting.instance.SetSize();
+
     }
 
 }
