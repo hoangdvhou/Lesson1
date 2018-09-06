@@ -39,11 +39,11 @@ public class Vector2D {
     void SubtrackBy(Vector2D other){
         this.SubtrackBy(other.x,other.y);
     }
-    Vector2D Sub(float x,float y){
-        return this.Sub(this.x - x,this.y - y);
+    public Vector2D Sub(float x, float y){
+        return new Vector2D(this.x - x,this.y - y);
     }
-    Vector2D Sub(Vector2D other){
-        return new Vector2D(this.x-other.x, this.y-other.y);
+    public Vector2D Sub(Vector2D other){
+        return this.Sub(this.x-other.x, this.y-other.y);
     }
     void ScaleBy(int m) {
         this.x = m*this.x;

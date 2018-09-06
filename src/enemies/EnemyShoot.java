@@ -1,6 +1,7 @@
 package enemies;
 
 import bases.FrameCounter;
+import bases.GameOject;
 
 public class EnemyShoot {
     boolean shootLock;
@@ -9,7 +10,7 @@ public class EnemyShoot {
     void run(Enemy enemy) {
         if(!this.shootLock){
             EnemyBullets newBullet = new EnemyBullets((int)enemy.position.x,(int)enemy.position.y);
-            enemy.bullets.add(newBullet);
+            GameOject.add(newBullet);
             this.shootLock=true;
         }
         if(shootLock){

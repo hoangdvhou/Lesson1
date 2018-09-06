@@ -1,25 +1,19 @@
 package enemies;
 
+import bases.GameOject;
 import bases.ImageRenderer;
 import bases.Vector2D;
 
-import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
-public class Enemy extends JPanel {
-    ImageRenderer imageRenderer;
-    int x;
-    int y;
-    Image image;
-    Vector2D position;
-    public ArrayList<EnemyBullets> bullets = new ArrayList<>();
-    EnemyShoot spawnEnemy;
+public class Enemy extends GameOject {
+    EnemyShoot spawnEnemyBullets;
 
     public Enemy(int x, int y) {
+        super(x,y);
         this.position = new Vector2D(x, y);
         this.imageRenderer = new ImageRenderer("images/enemy/bacteria/bacteria1.png");
-        this.spawnEnemy = new EnemyShoot();
+        this.spawnEnemyBullets = new EnemyShoot();
 
     }
 
@@ -30,11 +24,11 @@ public class Enemy extends JPanel {
 
     public void run() {
         this.move();
-        this.spawnEnemy();
+        this.spawnEnemyBullets();
     }
 
-    public void spawnEnemy() {
-        spawnEnemy.run(this);
+    public void spawnEnemyBullets() {
+        spawnEnemyBullets.run(this);
 
     }
 
