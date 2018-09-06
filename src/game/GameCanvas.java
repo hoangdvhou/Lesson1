@@ -14,7 +14,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class GameCanvas extends JPanel {
     ArrayList<GameOject> gameOjects = new ArrayList<>();
