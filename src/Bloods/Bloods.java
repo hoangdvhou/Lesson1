@@ -5,9 +5,9 @@ import bases.ImageRenderer;
 import bases.Vector2D;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Bloods extends GameOject {
-
     public Bloods(int x, int y) {
         super(x,y);
         this.position = new Vector2D();

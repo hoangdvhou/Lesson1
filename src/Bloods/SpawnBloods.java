@@ -7,14 +7,18 @@ import enemies.Enemy;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SpawnBloods  {
+public class SpawnBloods extends GameOject {
     Random random;
 
-    public SpawnBloods() {
+    public SpawnBloods(int x, int y) {
+        super(x, y);
+        this.position = new Vector2D(x, y);
         random = new Random();
     }
 
+    @Override
     public void run() {
+        super.run();
         bloodsSpawnCount++;
         if (bloodsSpawnCount >= 60) {
             bloodsSpawnCount = 0;

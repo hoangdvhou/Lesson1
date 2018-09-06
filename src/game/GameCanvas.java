@@ -17,26 +17,26 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameCanvas extends JPanel {
-    Image background;
     ArrayList<GameOject> gameOjects = new ArrayList<>();
     InputManager inputManager;
     BufferedImage backBuffer;//null
     Graphics backBufferGraphics;
     GameOject spawnEnemys;
     SpawnBloods spawnBloods;
+    GameOject background;
 
     public GameCanvas() {
+        background = new Background(300,400);
         spawnEnemys = new SpawnEnemys(30,100);
-        spawnBloods = new SpawnBloods();
+        spawnBloods = new SpawnBloods(20,100);
         inputManager = InputManager.instance;
        // inputManager = new inputs.InputManager();
 
         // enemies.Enemy
         Player player = new Player(300,700);
 
-
+        GameOject.add(background);
         GameOject.add(player);
-        background = ImageUtil.load("images/background/background.png");
         //
         backBuffer = new BufferedImage(600, 800, BufferedImage.TYPE_INT_ARGB);
         backBufferGraphics = backBuffer.getGraphics();
@@ -59,7 +59,6 @@ public class GameCanvas extends JPanel {
 
         int enemySpawnCount;
     void render() {
-        backBufferGraphics.drawImage(background, 0, 0, null);
         //backBufferGraphics.drawImapge(player.image, player.x, player.y, null);
         GameOject.renderALL(backBufferGraphics);
         this.repaint();
