@@ -1,11 +1,10 @@
-package Bloods;
+package bloods;
 
 import bases.GameOject;
 import bases.ImageRenderer;
 import bases.Vector2D;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Bloods extends GameOject {
     public Bloods(int x, int y) {

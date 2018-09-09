@@ -1,4 +1,4 @@
-package Players;
+package players;
 
 import bases.FrameCounter;
 import bases.GameOject;

@@ -1,10 +1,8 @@
-package Bloods;
+package bloods;
 
 import bases.GameOject;
 import bases.Vector2D;
-import enemies.Enemy;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class SpawnBloods extends GameOject {

@@ -1,12 +1,9 @@
 package game;
 
-import Bloods.SpawnBloods;
-import Players.Player;
-import Players.PlayerBullet;
-import bases.GameOject;
-import bases.ImageUtil;
+import bloods.SpawnBloods;
 import enemies.Enemy;
-import enemies.EnemyBullets;
+import players.Player;
+import bases.GameOject;
 import enemies.SpawnEnemys;
 import inputs.InputManager;
 
@@ -36,6 +33,7 @@ public class GameCanvas extends JPanel {
 
         GameOject.add(background);
         GameOject.add(player);
+        GameOject.add(new Enemy(0,0));
         //
         backBuffer = new BufferedImage(600, 800, BufferedImage.TYPE_INT_ARGB);
         backBufferGraphics = backBuffer.getGraphics();

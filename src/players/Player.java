@@ -1,10 +1,8 @@
-package Players;
+package players;
+import bases.BoxCollider;
 import bases.GameOject;
 import bases.ImageRenderer;
-import bases.Vector2D;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Player extends GameOject {
@@ -17,6 +15,7 @@ public class Player extends GameOject {
         playerShoot = new PlayerShoot();
         imageRenderer = new ImageRenderer("images/player/MB-69/player2.png");
         this.playerMove  = new PlayerMove();
+        this.boxCollider = new BoxCollider(x,y,40,20);
     }
     //method
 
@@ -36,4 +35,12 @@ public class Player extends GameOject {
     public  void move() {
         this.playerMove.run(this.position);
     }
-        }
+
+    public void getStop() {
+        this.stopgame();
+    }
+
+    public void getHit() {
+        this.getStop();
+    }
+}
