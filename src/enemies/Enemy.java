@@ -10,6 +10,7 @@ import java.awt.*;
 
 public class Enemy extends GameOject {
     EnemyShoot spawnEnemyBullets;
+    EnemyBullets enemyBullets;
 
     public Enemy(int x, int y) {
         super(x, y);
@@ -17,6 +18,7 @@ public class Enemy extends GameOject {
         this.imageRenderer = new ImageRenderer("images/enemy/bacteria/bacteria1.png");
         this.spawnEnemyBullets = new EnemyShoot();
         this.boxCollider = new BoxCollider(x, y, 30, 30);
+        enemyBullets = new EnemyBullets(30,30);
 
     }
 
@@ -25,6 +27,7 @@ public class Enemy extends GameOject {
         super.run();
         this.move();
         this.spawnEnemyBullets();
+        enemyBullets.hitPlayer();
     }
 
     public void spawnEnemyBullets() {

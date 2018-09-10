@@ -11,7 +11,7 @@ public class GameOject {
     public Vector2D position;
     public ImageRenderer imageRenderer;
     public boolean isActive;
-    public boolean isStop;
+    public boolean isStop = true;
 
     private static ArrayList<GameOject> gameOjects = new ArrayList<>();
     private static ArrayList<GameOject> newGameOjects = new ArrayList<>();
@@ -22,7 +22,7 @@ public class GameOject {
 
     public static void runAll() {
         for (GameOject go : gameOjects) {
-            if(go.isActive && go.isStop)
+            if(go.isActive && !go.isStop)
             go.run();
         }
 
@@ -32,7 +32,7 @@ public class GameOject {
 
     public static void renderALL(Graphics g) {
         for (GameOject go : gameOjects) {
-            if (go.isActive&& go.isStop)
+            if (go.isActive&& !go.isStop)
             go.render(g);
         }
     }
@@ -72,7 +72,7 @@ public class GameOject {
         this.imageRenderer = null; //not yet specified
         this.boxCollider = null;
         this.isActive = true;
-        this.isStop = true;
+        this.isStop = false;
     }
 
 
@@ -99,6 +99,6 @@ public class GameOject {
     protected void stopgame() {
         this.isStop = false;
         System.out.println("You can play it again");
-        System.exit(0);
+        this.position = null;
     }
 }

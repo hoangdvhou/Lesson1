@@ -21,7 +21,7 @@ public class EnemyBullets extends GameOject {
         this.hitPlayer();
 
     }
-    private void hitPlayer(){
+    public void hitPlayer(){
         Player player = GameOject.checkCollision2(boxCollider);
         if (player != null) {
             System.out.println("Hit");

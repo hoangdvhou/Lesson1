@@ -19,7 +19,7 @@ public class PlayerBullet extends GameOject {
         hitEnemies();
     }
 
-    private void hitEnemies() {
+    public void hitEnemies() {
         Enemy enemy = GameOject.checkCollision(this.boxCollider);
         if (enemy != null) {
             System.out.println("Hit");
