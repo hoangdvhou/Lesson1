@@ -1,22 +1,18 @@
 package enemies;
-
-import bases.FrameCounter;
 import bases.GameOject;
-import bases.ImageRenderer;
 import bases.Vector2D;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-public class SpawnEnemys extends GameOject {
+public class SpawnEnemy extends GameOject {
     Random random;
-    FrameCounter frameCounter;
+    bases.FrameCounter frameCounter;
 
-    public SpawnEnemys(int x, int y) {
+    public SpawnEnemy(int x, int y) {
         super(x, y);
         this.position = new Vector2D(x,y);
         random = new Random();
-        this.frameCounter = new FrameCounter(150);
+        this.frameCounter = new bases.FrameCounter(150);
     }
 
     @Override

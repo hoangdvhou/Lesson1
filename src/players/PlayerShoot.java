@@ -11,8 +11,11 @@ public class PlayerShoot {
     void run(Player player) {
         if (InputManager.instance.xPressed && !shootLock) {
             Vector2D bulletpPosition = player.position.Sub(0,50);
-            PlayerBullet newBullet = new PlayerBullet((int) bulletpPosition.x, (int) bulletpPosition.y);
-            GameOject.add(newBullet);
+            //1.Try to recycle
+            PlayerBullet newBullet = GameOject.recycle((int)bulletpPosition
+                    .x,(int)bulletpPosition.y,PlayerBullet.class);
+            //2.If can't recycle fail, create new
+
             this.shootLock = true;
 
         }//shoot

@@ -14,7 +14,7 @@ public class Player extends GameOject {
     public Player(int x,int y){
         super(x,y);
         playerShoot = new PlayerShoot();
-        imageRenderer = new ImageRenderer("images/player/MB-69/player2.png");
+        renderer = new ImageRenderer("images/player/MB-69/player2.png");
         this.playerMove  = new PlayerMove();
         this.boxCollider = new BoxCollider(x,y,40,20);
         playerBullet = new PlayerBullet((int)this.position.x,(int)this.position.y);

@@ -5,7 +5,7 @@ import bases.GameOject;
 
 public class EnemyShoot {
     boolean shootLock;
-    FrameCounter frameCounter = new FrameCounter(1000);
+    FrameCounter frameCounter = new FrameCounter(100);
 
     void run(Enemy enemy) {
         if(!this.shootLock){

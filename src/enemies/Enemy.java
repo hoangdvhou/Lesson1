@@ -1,12 +1,9 @@
 package enemies;
 
-import bases.BoxCollider;
-import bases.GameOject;
-import bases.ImageRenderer;
-import bases.Vector2D;
-import players.Player;
+import bases.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Enemy extends GameOject {
     EnemyShoot spawnEnemyBullets;
@@ -14,13 +11,19 @@ public class Enemy extends GameOject {
 
     public Enemy(int x, int y) {
         super(x, y);
+        //ArrayList<Image> images = new ArrayList<>();
+
         this.position = new Vector2D(x, y);
-        this.imageRenderer = new ImageRenderer("images/enemy/bacteria/bacteria1.png");
+        this.renderer = new Animation(
+                ImageUtil.load("images/enemy/bacteria/bacteria1.png"),
+                ImageUtil.load("images/enemy/bacteria/bacteria2.png"),
+                ImageUtil.load("images/enemy/bacteria/bacteria3.png"));
         this.spawnEnemyBullets = new EnemyShoot();
         this.boxCollider = new BoxCollider(x, y, 30, 30);
         enemyBullets = new EnemyBullets(30,30);
 
     }
+
 
 
     public void run() {
@@ -44,6 +47,11 @@ public class Enemy extends GameOject {
 
     public void getHitEnemies() {
         this.destroy();
+        EnemyExplosion explosion = new EnemyExplosion(
+                (int)this.position.x,
+                (int)this.position.y
+        );
+        GameOject.add(explosion);
     }
 }
 

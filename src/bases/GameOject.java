@@ -1,15 +1,13 @@
 package bases;
 
-import enemies.Enemy;
-import players.Player;
+import players.PlayerBullet;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class GameOject {
     public Vector2D position;
-    public ImageRenderer imageRenderer;
+    public Renderer renderer;
     public boolean isActive;
     public boolean isStop = true;
 
@@ -28,6 +26,7 @@ public class GameOject {
 
         gameOjects.addAll(newGameOjects);
         newGameOjects.clear();
+        System.out.println(gameOjects.size());
     }
 
     public static void renderALL(Graphics g) {
@@ -36,14 +35,14 @@ public class GameOject {
             go.render(g);
         }
     }
-
-    public static Enemy checkCollision(BoxCollider boxCollider) {
-        Enemy result = null;
+    //Generics
+    public static <T extends GameOject> T checkCollision(BoxCollider boxCollider,Class<T>cls) {
+        T result = null;
         for (GameOject go : gameOjects) {
             if (go.isActive && go.boxCollider != null) {
-                if (go instanceof Enemy) {
+                if (go.getClass().equals(cls)) {
                     if (go.boxCollider.collideWith(boxCollider)) {
-                        result = (Enemy) go;
+                        result = (T) go;
                     }
                 }
             }
@@ -51,31 +50,37 @@ public class GameOject {
 
         return result;
     }
-    public static Player checkCollision2(BoxCollider boxCollider){
-        Player result2 = null;
-        for (GameOject go : gameOjects) {
-            if (go.isActive && go.boxCollider != null) {
-                if (go instanceof Player) {
-                    if (go.boxCollider.collideWith(boxCollider)) {
-                        result2 = (Player) go;
-                    }
-                }
-            }
-        }
-
-        return result2;
-    }
     public BoxCollider boxCollider;
 
     public GameOject(int x, int y) {
         this.position = new Vector2D(x, y);
-        this.imageRenderer = null; //not yet specified
+        this.renderer = null; //not yet specified
         this.boxCollider = null;
         this.isActive = true;
         this.isStop = false;
     }
 
+    public static <T extends GameOject> PlayerBullet recycle(int x,int y,Class<T>cls) {
+        T pb = null;
+        for(GameOject go:gameOjects){
+            if(!go.isActive){
+                if(go.getClass().equals(cls)){
+                    pb = (T) go;
+                }
+            }
+        }
 
+        if (pb == null){
+            pb = (T)new PlayerBullet(x,y);
+            GameOject.add(pb);
+        }
+        else {
+            pb.isActive =true;
+            pb.position.x = x;
+            pb.position.y = y;
+        }
+        return (PlayerBullet) pb;
+    }
     public void run() {
         if (this.boxCollider != null) {
             this.boxCollider.position.x = this.position.x;
@@ -85,8 +90,8 @@ public class GameOject {
     }
 
     public void render(Graphics g) {
-        if (imageRenderer != null) {
-            this.imageRenderer.render(g, this.position);
+        if (renderer != null) {
+            this.renderer.render(g, this.position);
         }
         if (this.boxCollider != null) {
             this.boxCollider.render(g);
@@ -100,5 +105,6 @@ public class GameOject {
         this.isStop = false;
         System.out.println("You can play it again");
         this.position = null;
+        System.exit(0);
     }
 }

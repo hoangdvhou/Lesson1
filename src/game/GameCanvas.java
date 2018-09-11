@@ -4,7 +4,7 @@ import bloods.SpawnBloods;
 import enemies.Enemy;
 import players.Player;
 import bases.GameOject;
-import enemies.SpawnEnemys;
+import enemies.SpawnEnemy;
 import inputs.InputManager;
 
 import javax.swing.*;
@@ -23,7 +23,7 @@ public class GameCanvas extends JPanel {
 
     public GameCanvas() {
         background = new Background(300,400);
-        spawnEnemys = new SpawnEnemys(30,100);
+        spawnEnemys = new SpawnEnemy(30,100);
         spawnBloods = new SpawnBloods(20,100);
         inputManager = InputManager.instance;
        // inputManager = new inputs.InputManager();
