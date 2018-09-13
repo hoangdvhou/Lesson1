@@ -104,7 +104,6 @@ public class GameOject {
     protected void stopgame() {
         this.isStop = false;
         System.out.println("You can play it again");
-        this.position = null;
         System.exit(0);
     }
 }

@@ -1,35 +1,28 @@
 package bloods;
 
-import bases.GameOject;
-import bases.ImageRenderer;
-import bases.Vector2D;
+import bases.*;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class Bloods extends GameOject {
+    public ArrayList<Bloods> bloodCells;
+
     public Bloods(int x, int y) {
-        super(x,y);
-        this.position = new Vector2D();
-        this.renderer = new ImageRenderer("images/blood cells/blood-cell1.png");
+        super(x, y);
+        bloodCells = new ArrayList<>();
+        renderer = new Animation(ImageUtil.load("images/blood cells/blood-cell1.png"),
+                ImageUtil.load("images/blood cells/blood-cell2.png"),
+                ImageUtil.load("images/blood cells/blood-cell3.png"),
+                ImageUtil.load("images/blood cells/blood-cell4.png"));
+    }
+    private void deactivateIfNeeded() {
+        if(this.position.y < 0){
+            this.isActive = false;
+        }
     }
 
-    @Override
-    public void run() {
-        super.run();
-        this.move();
-    }
-
-
-    public void render(Graphics g) {
-        renderer.render(g,this.position);
-    }
-
-
-    private void move() {
-        Vector2D velocity = new Vector2D();
-        velocity.y+=3;
-        velocity.x+=1;
-        this.position.addUp(velocity);
-
+    public void run(){
+        this.position.addUp(3, 3);
+        deactivateIfNeeded();
     }
 }

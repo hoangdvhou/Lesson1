@@ -17,20 +17,16 @@ public class Enemy extends GameOject {
         this.renderer = new Animation(
                 ImageUtil.load("images/enemy/bacteria/bacteria1.png"),
                 ImageUtil.load("images/enemy/bacteria/bacteria2.png"),
-                ImageUtil.load("images/enemy/bacteria/bacteria3.png"));
+                ImageUtil.load("images/enemy/bacteria/bacteria3.png"),
+                ImageUtil.load("images/enemy/bacteria/bacteria4.png"));
         this.spawnEnemyBullets = new EnemyShoot();
         this.boxCollider = new BoxCollider(x, y, 30, 30);
-        enemyBullets = new EnemyBullets(30,30);
-
     }
-
-
-
     public void run() {
         super.run();
         this.move();
         this.spawnEnemyBullets();
-        enemyBullets.hitPlayer();
+        deactivate();
     }
 
     public void spawnEnemyBullets() {
@@ -43,6 +39,12 @@ public class Enemy extends GameOject {
         velocity.y += 3;
         this.position.addUp(velocity);
 
+    }
+
+    private void deactivate(){
+        if(this.position.y > 800){
+            this.isActive = false;
+        }
     }
 
     public void getHitEnemies() {

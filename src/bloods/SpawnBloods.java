@@ -22,7 +22,6 @@ public class SpawnBloods extends GameOject {
         super.run();
         frameCounter.run();
         if(frameCounter.expried) {
-            bloodsSpawnCount = 0;
             frameCounter.reset();
             int posX = random.nextInt(600);
             Bloods bloods = new Bloods(posX, 0);
@@ -30,7 +29,6 @@ public class SpawnBloods extends GameOject {
         }
 
     }
-    int bloodsSpawnCount;
 
 }
 

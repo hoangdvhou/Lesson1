@@ -1,7 +1,6 @@
 package players;
-import bases.BoxCollider;
-import bases.GameOject;
-import bases.ImageRenderer;
+import bases.*;
+import enemies.Enemy;
 
 import java.util.ArrayList;
 
@@ -14,10 +13,13 @@ public class Player extends GameOject {
     public Player(int x,int y){
         super(x,y);
         playerShoot = new PlayerShoot();
-        renderer = new ImageRenderer("images/player/MB-69/player2.png");
+        renderer = new Animation(
+                ImageUtil.load("images/player/MB-69/player1.png"),
+                ImageUtil.load("images/player/MB-69/player2.png"),
+                ImageUtil.load("images/player/MB-69/player3.png"),
+                ImageUtil.load("images/player/MB-69/player4.png"));
         this.playerMove  = new PlayerMove();
         this.boxCollider = new BoxCollider(x,y,40,20);
-        playerBullet = new PlayerBullet((int)this.position.x,(int)this.position.y);
     }
     //method
 
@@ -27,12 +29,21 @@ public class Player extends GameOject {
         super.run();
         this.move();
         this.shoot();
-        playerBullet.hitEnemies();
+        this.hitEnemies();
 
     }
 
     public void shoot() {
         playerShoot.run(this);
+    }
+
+    private void hitEnemies(){
+        Enemy enemy = GameOject.checkCollision(this.boxCollider, Enemy.class);
+        if(enemy != null){
+            System.out.println("Hit!");
+            enemy.getHitEnemies();
+            this.destroy();
+        }
     }
 
 
