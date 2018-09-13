@@ -10,10 +10,10 @@ public class Bloods extends GameOject {
     public Bloods(int x, int y) {
         super(x, y);
         bloodCells = new ArrayList<>();
-        renderer = new Animation(ImageUtil.load("images/blood cells/blood-cell1.png"),
-                ImageUtil.load("images/blood cells/blood-cell2.png"),
-                ImageUtil.load("images/blood cells/blood-cell3.png"),
-                ImageUtil.load("images/blood cells/blood-cell4.png"));
+        renderer = new Animation(ImageUtil.load("images/bloodcells/blood-cell1.png"),
+                ImageUtil.load("images/bloodcells/blood-cell2.png"),
+                ImageUtil.load("images/bloodcells/blood-cell3.png"),
+                ImageUtil.load("images/bloodcells/blood-cell4.png"));
     }
     private void deactivateIfNeeded() {
         if(this.position.y < 0){
